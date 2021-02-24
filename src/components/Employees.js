@@ -13,6 +13,8 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
+        borderRadius: '3px',
+        boxShadow: '0 3px 3px 0 rgba(30, 30, 30, .7)',
     },
     heading: {
         fontSize: theme.typography.pxToRem(20),
@@ -20,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     main: {
         flex: 1,
-        paddingBottom: '2rem'
+        paddingBottom: '2rem',
     }
 }))
 

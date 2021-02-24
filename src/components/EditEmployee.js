@@ -1,10 +1,9 @@
 import TextField from '@material-ui/core/TextField'
 import { withStyles, makeStyles, } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
 
 const StyledTextField = withStyles((theme) => ({
     root: {
-        margin: theme.spacing(2),
+        margin: theme.spacing(1),
         padding: theme.spacing(1),
         '& .MuiInputBase-root': {
             color: theme.palette.primary.contrastText,
@@ -17,7 +16,7 @@ const StyledTextField = withStyles((theme) => ({
         },
         '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
             borderColor: theme.palette.primary.light,
-            fontSize: '1rem',
+            fontSize: '.9rem',
         },
         '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
             borderColor: theme.palette.secondary.main,
@@ -27,7 +26,7 @@ const StyledTextField = withStyles((theme) => ({
         },
         '& .MuiInputLabel-outlined.Mui-focused': {
             color: theme.palette.secondary.main,
-            fontSize: '1rem',
+            fontSize: '1.1rem',
         },
         '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
             color: theme.palette.secondary.main,

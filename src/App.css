@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
-* {
-  font-family: 'Poppins', sans-serif;
-}
-
 body, h1 {
+  font-family: 'Poppins', sans-serif;
   color:rgb(222, 222, 222)
 }
 
@@ -15,16 +12,47 @@ body, h1 {
 }
 
 .App-logo {
-  height: 50vmin;
+  width: 15rem;
   pointer-events: none;
   margin: 2rem;
   margin-bottom: 1rem;
 }
 
-.navbar-logo {
-  height: 2.8rem;
-  margin-right: 2rem;
-  margin-top: 0.2rem;
+@media (max-width: 600px) {
+  .navbar-nav {
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+  }
+
+  .navbar-logo {
+    display: none;
+  }
+}
+
+
+@media (min-width: 600px) {
+  .navbar-nav {
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+  }
+
+  .navbar-logo {
+    max-width: 2.7rem;
+    margin: .3rem 0rem 0rem 0rem;
+  }
+
+  .navbar-logo:hover {
+    zoom: 105%;
+  }
+
+  .navbar-links {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .navbar-link {
@@ -40,6 +68,8 @@ body, h1 {
     animation: App-logo-spin infinite 30s linear;
   }
 }
+
+
 
 .App-header {
   min-height: 500px;

@@ -1,25 +1,29 @@
 import AppBar from '@material-ui/core/AppBar'
 import ToolBar from '@material-ui/core/ToolBar'
 import { Link, } from 'react-router-dom'
-import logo from './avacado.png'
+import logo from './images/avacado.png'
 
 const NavBar = () => {
     return (
         <div>
-            <AppBar color='primary' position='sticky'>
+            <AppBar color='primary' position='static'>
                 <ToolBar>
                     <Link to='/home'>
                         <img src={ logo } className='navbar-logo' alt='logo'/>
                     </Link>
-                    <Link to='/home' style={{ color: '#cddc39', fontWeight: 'bold', textDecoration: 'none', marginRight: '2rem',}}>
-                        <span className='navbar-link'>Home</span>
-                    </Link>
-                    <Link to='/schedule' style={{ color: '#cddc39', fontWeight: 'bold', textDecoration: 'none', marginRight: '2rem',}}>
-                        <span className='navbar-link'>Schedule</span>
-                    </Link>
-                    <Link to='/employees' style={{ color: '#cddc39', fontWeight: 'bold', textDecoration: 'none'}}>
-                        <span className='navbar-link'>Employees</span>
-                    </Link>
+                    <div className='navbar-nav'>
+                        <div className='navbar-links'>
+                            <Link to='/home' style={{ color: '#cddc39', fontWeight: 'bold', textDecoration: 'none', marginRight: '2rem',}}>
+                                <span className='navbar-link'>Home</span>
+                            </Link>
+                            <Link to='/schedule' style={{ color: '#cddc39', fontWeight: 'bold', textDecoration: 'none', marginRight: '2rem',}}>
+                                <span className='navbar-link'>Schedule</span>
+                            </Link>
+                            <Link to='/employees' style={{ color: '#cddc39', fontWeight: 'bold', textDecoration: 'none'}}>
+                                <span className='navbar-link'>Employees</span>
+                            </Link>
+                        </div>
+                    </div>
                 </ToolBar>
             </AppBar>
         </div>

@@ -6,7 +6,7 @@ import EditEmployee from './components/EditEmployee.js'
 import Employees from './components/Employees.js'
 import theme from './components/theme.js'
 import {  ThemeProvider } from '@material-ui/core/styles'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 function App() {
   return (

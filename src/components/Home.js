@@ -1,7 +1,6 @@
-import lime from '../lime.svg'
+import lime from './images/lime.svg'
 import Button from '@material-ui/core/Button'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -10,10 +9,8 @@ import Collapse from '@material-ui/core/Collapse'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import IconButton from '@material-ui/core/IconButton'
 import clsx from 'clsx'
-import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
-import theme from './theme'
 
 const useStyles = makeStyles((theme) => ({
     expand: {
@@ -65,7 +62,12 @@ const Home = () => {
             style={{ marginTop: '2vh', padding: '2rem'}}
         >
             <Grid item sm={10}>
-                <Card style={{ maxWidth: '95vh', backgroundColor: '#424242', borderRadius: '20px'}}>
+                <Card style={{ 
+                        maxWidth: '95vh', 
+                        backgroundColor: '#424242', 
+                        borderRadius: '20px',
+                        boxShadow: '0 3px 3px 0 rgba(30, 30, 30, .7)'
+                    }}>
                     <CardContent>
                         <img src={ lime } className='App-logo' alt='logo' />
                     </CardContent>
