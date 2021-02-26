@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import './App.css';
-import NavBar from './components/NavBar.js'
 import Home from './components/Home.js'
+import NavBar from './components/NavBar.js'
+import SignIn from './components/SignIn.js'
 import Schedule from './components/Schedule.js'
 import EditEmployee from './components/EditEmployee.js'
 import Employees from './components/Employees.js'
@@ -17,6 +19,7 @@ function App() {
             <NavBar />
           </header>
           <Route path='/home' component={ Home } />
+          <Route path='/sign-in' component={ SignIn } />
           <Route path='/schedule' component={ Schedule } />
           <Route path='/editEmployee' component={ EditEmployee } />
           <Route path='/employees' component={ Employees } />

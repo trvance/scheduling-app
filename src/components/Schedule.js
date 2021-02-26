@@ -1,4 +1,4 @@
-import Calendar from './Calendar/Calendar.js'
+import Calendar from './calendar/Calendar.js'
 
 const Schedule = () => {
     return (

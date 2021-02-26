@@ -1,13 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
-body, h1 {
+* {
+  margin: 0;
+}
+
+body {
   font-family: 'Poppins', sans-serif;
   color:rgb(222, 222, 222)
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin: 2.2rem;
 }
 
 .App {
   text-align: center;
   background-color: #2c2e32;
+  padding-bottom: 2rem;
   min-height: 100vh;
 }
 
@@ -26,6 +37,10 @@ body, h1 {
   }
 
   .navbar-logo {
+    display: none;
+  }
+
+  .navbar-sign-in-logo {
     display: none;
   }
 }
@@ -52,6 +67,14 @@ body, h1 {
     margin-right: auto;
     justify-content: space-between;
     align-items: center;
+  }
+  
+  .material-icons.md-36 {
+    font-size: 36px;
+    position: absolute;
+    right: 1rem;
+    top: .8rem;
+    color:#cddc39;
   }
 }
 

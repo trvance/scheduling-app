@@ -1,11 +1,9 @@
 import './calendar.css'
 import { useState } from 'react'
 import Container from '@material-ui/core/Container'
-import Typography from '@material-ui/core/Typography'
 import { format } from 'date-fns'
 import { subMonths, addMonths, addDays, isSameDay, isSameMonth } from 'date-fns'
 import { startOfWeek, endOfWeek, startOfMonth, endOfMonth } from 'date-fns'
-
 
 const Calendar = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date())
@@ -35,8 +33,7 @@ const Calendar = () => {
     }
 
     const renderDays = () => {
-        const deviceWidth = window.innerWidth
-        const dateFormat = (deviceWidth>600) ? 'EEEE' : 'E'
+        const dateFormat = (window.innerWidth>800) ? 'E' : 'E'
         const days = []
 
         let startDate = startOfWeek(currentMonth)
