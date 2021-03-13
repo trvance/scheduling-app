@@ -4,13 +4,13 @@ import Accordion from '@material-ui/core/Accordion'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import Typography from '@material-ui/core/Typography'
-import EditEmployee from './EditEmployee.js'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
 import IconButton from '@material-ui/core/IconButton'
 import Icon from '@material-ui/core/Icon'
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const Employee = () => {
+const Employee = (props) => {
     const classes = useStyles()
 
     return (
@@ -51,14 +51,14 @@ const Employee = () => {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography className={classes.heading}>Employee</Typography>
+                    <Typography className={classes.heading}>{props.firstName} {props.lastName}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <EditEmployee />
+                    <p>{props.firstName} <p> </p>{props.lastName}</p>
+                    <br/>
+                    <p>{props.email}</p>
+                    
                 </AccordionDetails>
-                <Button variant='contained' color='secondary' style={{marginBottom:'1rem'}}>
-                    Edit Employee
-                </Button>
             </Accordion>
         </Box>
     )

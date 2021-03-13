@@ -1,7 +1,6 @@
 import lime from './images/lime.svg'
-import Button from '@material-ui/core/Button'
 import { useState } from 'react'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
+import { makeStyles, } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
@@ -60,7 +59,11 @@ const Home = () => {
                         <img src={ lime } className='App-logo' alt='logo' />
                     </CardContent>
                     <CardContent>
-                        <StyledButton onClick={handleExpandClick}>SIGN IN</StyledButton>
+                        <StyledButton 
+                            style={{width:'12rem'}} 
+                            onClick={handleExpandClick}>
+                                SIGN IN
+                        </StyledButton>
                     </CardContent>
                     <CardActions disableSpacing>
                         <IconButton

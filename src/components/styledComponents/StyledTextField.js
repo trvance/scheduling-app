@@ -5,7 +5,8 @@ const StyledTextField = withStyles((theme) => ({
     root: {
         '& .MuiInputBase-root': {
             color: theme.palette.primary.contrastText,
-            fontSize: '1rem',
+            backgroundColor: '#353535',
+            fontSize: '1.1rem',
         },
         '& .MuiInputLabel-root': {
             color: theme.palette.primary.light,

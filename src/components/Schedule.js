@@ -1,9 +1,12 @@
-import Calendar from './calendar/Calendar.js'
+import Calendar from './Calendar'
 
 const Schedule = () => {
     return (
-        <div>
-            <Calendar />
+        <div >
+            <h1>Calender</h1>
+            <div>
+                <Calendar />
+            </div>
         </div>
     )
 }
