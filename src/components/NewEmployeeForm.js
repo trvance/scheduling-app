@@ -33,6 +33,8 @@ const NewEmployeeForm = ({addEmployee}) => {
     const [lastName, setLastName] = useState('')
     const [middleInitial, setMiddleInitial] = useState('')
     const [email, setEmail] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState('')
+    const [position, setposition] = useState('')
   
     const handleClickOpen = (scrollType) => () => {
         setOpen(true)
@@ -45,7 +47,7 @@ const NewEmployeeForm = ({addEmployee}) => {
 
     const addEmployeeButton = () => {
         setOpen(false)
-        addEmployee({firstName, lastName, middleInitial, email})
+        addEmployee({firstName, lastName, middleInitial, email, phoneNumber, position})
     }
   
     const descriptionElementRef = useRef(null)
@@ -61,7 +63,7 @@ const NewEmployeeForm = ({addEmployee}) => {
     return (
       <div>
         <IconButton style={{bottom: '2vh'}} onClick={handleClickOpen('paper')}>
-            <Icon color='secondary'>add-icon</Icon>
+            <Icon color='primary'>add-icon</Icon>
         </IconButton>
         <Dialog
             className={classes.root}
@@ -83,7 +85,7 @@ const NewEmployeeForm = ({addEmployee}) => {
             <DialogContent 
                 dividers={scroll === 'paper'}
                 style={{
-                    backgroundColor:'#424242',
+                    backgroundColor:'#333333',
                     boxShadow: '0 0 10px #202020',
                     paddingTop: '2.5rem',
                     margin: 0
@@ -114,6 +116,8 @@ const NewEmployeeForm = ({addEmployee}) => {
                                 fullWidth
                                 variant='filled'
                                 color='secondary'
+                                value={middleInitial}
+                                onChane={(e) => setMiddleInitial(e.target.value)}
                             />
                         </div>
                         <div>
@@ -134,6 +138,8 @@ const NewEmployeeForm = ({addEmployee}) => {
                                 fullWidth
                                 variant='filled'
                                 color='secondary'
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
                             />
                         </div>
                         <div>
@@ -163,6 +169,8 @@ const NewEmployeeForm = ({addEmployee}) => {
                                 fullWidth
                                 variant='filled'
                                 color='secondary'
+                                value={position}
+                                onChange={(e) => setposition(e.target.value)}
                             />
                         </div>
                     </form>

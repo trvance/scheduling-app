@@ -1,31 +1,54 @@
 import AppBar from '@material-ui/core/AppBar'
 import ToolBar from '@material-ui/core/ToolBar'
+import Container from '@material-ui/core/Container'
 import { Link, } from 'react-router-dom'
 import logo from './images/avacado.png'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core'
+
+const useStyles = makeStyles((theme) => ({
+    navbarLinks: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        
+    },
+    link: {
+        color: theme.palette.primary.main,
+        fontSize: '1.1rem',
+        fontWeight: 'bold',
+        textDecoration: 'none',
+        marginRight: '2rem',
+        marginLeft: '2rem',
+        '&:hover': {
+            color: theme.palette.secondary.main,
+        },
+    },
+}))
 
 const NavBar = () => {
+    const classes = useStyles()
     return (
         <div>
-            <AppBar color='primary' position='sticky'>
+            <AppBar color='transparent' position='sticky'>
                 <ToolBar>
                     <Link to='/home'>
                         <img src={ logo } className='navbar-logo' alt='logo'/>
                     </Link>
-                    <div className='navbar-nav'>
-                        <div className='navbar-links'>
-                            <Link to='/home' style={{ color: '#cddc39', fontWeight: 'bold', textDecoration: 'none', marginRight: '2rem',}}>
-                                <span className='navbar-link'>Home</span>
+                        <Container className={classes.navbarLinks}>
+                            <Link className={classes.link} to='/home'>
+                                Home
                             </Link>
-                            <Link to='/schedule' style={{ color: '#cddc39', fontWeight: 'bold', textDecoration: 'none', marginRight: '2rem',}}>
-                                <span className='navbar-link'>Schedule</span>
+                            <Link className={classes.link} to='/schedule' >
+                                Schedule
                             </Link>
-                            <Link to='/employees' style={{ color: '#cddc39', fontWeight: 'bold', textDecoration: 'none'}}>
-                                <span className='navbar-link'>Employees</span>
+                            <Link className={classes.link} to='/employees'>
+                                Employees
                             </Link>
-                        </div>
-                    </div>
+                        </Container>
                     <Link className='navbar-sign-in-logo' to='/sign-in'>
-                        <span class='material-icons md-36'>account_box</span>
+                        <Typography class='material-icons md-36'>account_box</Typography>
                     </Link>
                 </ToolBar>
             </AppBar>

@@ -3,13 +3,14 @@ import Home from './components/Home.js'
 import NavBar from './components/NavBar.js'
 import SignIn from './components/SignIn.js'
 import Schedule from './components/Schedule.js'
-import NewEmployeeForm from './components/NewEmployeeForm.js'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import EmployeesView from './components/EmployeesView.js'
 import Employee from './components/Employee.js'
 import theme from './components/theme.js'
 import {  ThemeProvider } from '@material-ui/core/styles'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import { useState } from 'react'
+import Box from '@material-ui/core/Box'
 
 function App() {
   const [employee, setEmployee] = useState(<Employee/>)
@@ -23,6 +24,8 @@ function App() {
       firstName={props.firstName}
       lastName={props.lastName}
       email={props.email}
+      position={props.position}
+      phoneNumber={props.phoneNumber}
     />
     setEmployees([...employees, newEmployee])
     setCount(count+1)
@@ -41,10 +44,8 @@ function App() {
   return (
     <Router>
       <ThemeProvider theme={ theme }>
-        <div className='App'>
-          <header className='NavBar'>
-            <NavBar />
-          </header>
+        <CssBaseline />
+          <NavBar />
 
           <Route
             exact
@@ -67,7 +68,6 @@ function App() {
             <EmployeesView employees={employees} addEmployee={addEmployee} employee={employee}/>
           </Route>  
           
-        </div>
       </ThemeProvider>
     </Router>
   );
