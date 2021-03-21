@@ -1,52 +1,46 @@
 import './App.css';
-import Home from './components/Home.js'
+import Home from './components/HomePage.js'
 import NavBar from './components/NavBar.js'
-import SignIn from './components/SignIn.js'
-import Schedule from './components/Schedule.js'
+import SignIn from './components/SignInPage.js'
+import Schedule from './components/SchedulePage.js'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import EmployeesView from './components/EmployeesView.js'
-import Employee from './components/Employee.js'
-import theme from './components/theme.js'
+import EmployeesPage from './components/EmployeesPage.js'
+import theme from './themes/theme'
+import mintTheme from './themes/mintTheme'
 import {  ThemeProvider } from '@material-ui/core/styles'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import { useState } from 'react'
-import Box from '@material-ui/core/Box'
+import { testEmployees } from './testData/testEmployees'
+import { appointments } from './testData/testTimes'
+import { Container } from '@material-ui/core'
 
 function App() {
-  const [employee, setEmployee] = useState(<Employee/>)
-  const [employees, setEmployees ] = useState([])
+  const [employees, setEmployees] = useState(testEmployees)
+  const [employeesSchedules, setEmployeesSchedules] = useState(testEmployees.weekSchedule)
+  
   const isUserAuthenticated = false
-  const [count, setCount] = useState(0)
-  
-  const addEmployee = (props) => {
-    const newEmployee = <Employee 
-      key={count}
-      firstName={props.firstName}
-      lastName={props.lastName}
-      email={props.email}
-      position={props.position}
-      phoneNumber={props.phoneNumber}
-    />
+
+  const setEmployee = ({employee}) => {
+    const newEmployee = {
+      firstName: employee.firstName,
+      middleInitial: employee.middleInitial,
+      lastName: employee.lastName,
+      email: employee.email,
+      phoneNumber: employee.phoneNumber,
+      tenure: employee.startDate,
+      positions: [employee.position],
+      availability: [employee.availability],
+      desiredHours: employee.desiredHours,
+    }
     setEmployees([...employees, newEmployee])
-    setCount(count+1)
-  }
-  
-  const removeEmployee = () => {
-    const temp = [...employees]
-    temp.splice(0,1)
-    setEmployees(temp)
   }
 
-  const homeButton = () => {
-    setCount(count+1)
-  }
   
   return (
     <Router>
-      <ThemeProvider theme={ theme }>
+      <ThemeProvider theme={ mintTheme }>
         <CssBaseline />
-          <NavBar />
-
+          <NavBar/>
           <Route
             exact
             path="/"
@@ -59,15 +53,15 @@ function App() {
             }}
           />
           <Route path='/sign-in' component={ SignIn } />
-          {/* <Route path='/home' component={ Home } /> */}
           <Route path='/home'>
-            <Home count={count} click={homeButton}/>
+            <Home employee={testEmployees[0]}/>
           </Route>
-          <Route path='/schedule' component={ Schedule } />
+          <Route path='/schedule'>
+            <Schedule employeesSchedules={employeesSchedules} />
+          </Route>
           <Route path='/employees'>
-            <EmployeesView employees={employees} addEmployee={addEmployee} employee={employee}/>
+            <EmployeesPage employees={employees} addEmployee={setEmployee} />
           </Route>  
-          
       </ThemeProvider>
     </Router>
   );

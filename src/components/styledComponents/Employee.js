@@ -19,10 +19,6 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('md')]: {
             width: '60vw',
         },
-        // display: 'flex',
-        // flexDirection: 'column',
-        // alignItems: 'center',
-        // justifyContent: 'center',
     },
     heading: {
         fontSize: theme.typography.pxToRem(17),
@@ -56,9 +52,6 @@ const useStyles = makeStyles((theme) => ({
     },
     cardTitle: {
         fontSize: '1.2rem',
-        // fontFamily: 'Poppins',
-        
-        // textShadow: '2px 2px #242424',
         textTransform: 'uppercase',
         textAlign: 'center',
         letterSpacing: '0rem',
@@ -71,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const Employee = (props) => {
+const Employee = ({employee}) => {
     const classes = useStyles()
 
     return (
@@ -81,7 +74,7 @@ const Employee = (props) => {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography className={classes.heading}>{props.firstName} {props.lastName}</Typography>
+                    <Typography className={classes.heading}>{employee.firstName} {employee.lastName}</Typography>
                 </AccordionSummary>
                 <AccordionDetails className={classes.expandView}>
                     <Carousel 
@@ -91,26 +84,34 @@ const Employee = (props) => {
                     >
                         <Card className={classes.card}>
                             <div className={classes.cardTitleBackground}>
-                                <h2 className={classes.cardTitle}>Info</h2>
+                                <Typography className={classes.cardTitle}>Info</Typography>
                             </div>
-                            <Typography>{props.firstName} {props.lastName}</Typography> 
-                            <p>{props.position}</p> 
+                            <Typography>{employee.firstName} {employee.middleInitial} {employee.lastName}</Typography> 
+                            <p>{employee.position}</p> 
                         </Card>
                     
                     
                         <Card className={classes.card}>
                             <div className={classes.cardTitleBackground}>
-                                <h2 className={classes.cardTitle}>Availability</h2>
+                                <Typography className={classes.cardTitle}>Availability</Typography>
                             </div>
+                            <Typography>
+                                {employee.firstName}
+                                {employee.middleInitial}
+                                {employee.lastName}
+                                {employee.email}
+                                {employee.phoneNumber}
+                                {employee.position}
+                            </Typography>
                         </Card>
                         <Card className={classes.card}>
                             <Box>
                                 
                             <div className={classes.cardTitleBackground}>
-                                <h2 className={classes.cardTitle}>Contact</h2>
+                                <Typography className={classes.cardTitle}>Contact</Typography>
                             </div>
-                            <p>{props.phoneNumber}</p>
-                            <p>{props.email}</p>
+                            <p>{employee.phoneNumber}</p>
+                            <p>{employee.email}</p>
                             </Box>
                         </Card>
                         

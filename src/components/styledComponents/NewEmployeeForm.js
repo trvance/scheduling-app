@@ -1,4 +1,4 @@
-import StyledTextField from './styledComponents/StyledTextField.js'
+import StyledTextField from './StyledTextField.js'
 import Card from '@material-ui/core/Card'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
@@ -10,7 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import Slide from '@material-ui/core/Slide'
 import Icon from '@material-ui/core/Icon'
 import IconButton from '@material-ui/core/IconButton'
-import StyledButton from './styledComponents/StyledButton.js'
+import StyledButton from './StyledButton.js'
 import { useState, forwardRef, useEffect, useRef} from 'react'
 import { useTheme, makeStyles } from '@material-ui/core/styles'
 
@@ -29,12 +29,14 @@ const NewEmployeeForm = ({addEmployee}) => {
     const [open, setOpen] = useState(false)
     const [scroll, setScroll] = useState('paper')
     const classes = useStyles()
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [middleInitial, setMiddleInitial] = useState('')
-    const [email, setEmail] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('')
-    const [position, setposition] = useState('')
+    const [employee, setEmployee] = useState({
+        firstName: '',
+        middleInitial: '',
+        lastName: '',
+        phoneNumber: '',
+        email: '',
+        position: '',
+    })
   
     const handleClickOpen = (scrollType) => () => {
         setOpen(true)
@@ -47,8 +49,9 @@ const NewEmployeeForm = ({addEmployee}) => {
 
     const addEmployeeButton = () => {
         setOpen(false)
-        addEmployee({firstName, lastName, middleInitial, email, phoneNumber, position})
+        addEmployee({employee})
     }
+
   
     const descriptionElementRef = useRef(null)
     useEffect(() => {
@@ -72,7 +75,7 @@ const NewEmployeeForm = ({addEmployee}) => {
             scroll={scroll}
             aria-labelledby="scroll-dialog-title"
             aria-describedby="scroll-dialog-description"
-            style={{width: '100%'}}
+            style={{width: '100%', borderRadius: '20px',}}
         >
         <DialogTitle 
             id="scroll-dialog-title"
@@ -96,7 +99,7 @@ const NewEmployeeForm = ({addEmployee}) => {
               ref={descriptionElementRef}
               tabIndex={-1}
             >
-                <Box justifyContent='center' alignContent='center'>
+                <Box >
                     <form noValidate autoComplete='off'>
                         <div>
                             <StyledTextField 
@@ -105,8 +108,8 @@ const NewEmployeeForm = ({addEmployee}) => {
                                 fullWidth
                                 variant='filled'
                                 color='secondary'
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
+                                value={employee.firstName}
+                                onChange={(e) => setEmployee({...employee, firstName: e.target.value})}
                             />
                         </div>
                         <div >
@@ -116,8 +119,8 @@ const NewEmployeeForm = ({addEmployee}) => {
                                 fullWidth
                                 variant='filled'
                                 color='secondary'
-                                value={middleInitial}
-                                onChane={(e) => setMiddleInitial(e.target.value)}
+                                value={employee.middleInitial}
+                                onChange={(e) => setEmployee({...employee, middleInitial: e.target.value})}
                             />
                         </div>
                         <div>
@@ -127,8 +130,8 @@ const NewEmployeeForm = ({addEmployee}) => {
                                 fullWidth
                                 variant='filled'
                                 color='secondary'
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
+                                value={employee.lastName}
+                                onChange={(e) => setEmployee({...employee, lastName: e.target.value})}
                             />
                         </div>
                         <div>
@@ -138,8 +141,8 @@ const NewEmployeeForm = ({addEmployee}) => {
                                 fullWidth
                                 variant='filled'
                                 color='secondary'
-                                value={phoneNumber}
-                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                value={employee.phoneNumber}
+                                onChange={(e) => setEmployee({...employee, phoneNumber: e.target.value})}
                             />
                         </div>
                         <div>
@@ -149,8 +152,8 @@ const NewEmployeeForm = ({addEmployee}) => {
                                 fullWidth
                                 variant='filled'
                                 color='secondary'
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                value={employee.email}
+                                onChange={(e) => setEmployee({...employee, email: e.target.value})}
                             />
                         </div>
                         <div>
@@ -169,8 +172,8 @@ const NewEmployeeForm = ({addEmployee}) => {
                                 fullWidth
                                 variant='filled'
                                 color='secondary'
-                                value={position}
-                                onChange={(e) => setposition(e.target.value)}
+                                value={employee.position}
+                                onChange={(e) => setEmployee({...employee, position: e.target.value})}
                             />
                         </div>
                     </form>
@@ -178,7 +181,7 @@ const NewEmployeeForm = ({addEmployee}) => {
             </DialogContentText>
             </DialogContent>
             <DialogActions style={{backgroundColor:'#424242', padding:'1rem 2rem 1rem 2rem'}}>
-            <Button onClick={handleClose} color='primary' style={{color:'#bbb'}}>
+            <Button variant='text' onClick={handleClose} color='primary' style={{color:'#bbb'}}>
               Cancel
             </Button>
             <StyledButton style={{height:'3rem', width:'12rem'}} variant='contained' onClick={addEmployeeButton} color='secondary'>

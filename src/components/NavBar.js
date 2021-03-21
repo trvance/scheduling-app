@@ -8,21 +8,23 @@ import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
+    navbar: {
+        backgroundColor: theme.palette.background.default,
+    },
     navbarLinks: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        
     },
     link: {
         color: theme.palette.primary.main,
-        fontSize: '1.1rem',
+        fontSize: '1.3rem',
         fontWeight: 'bold',
         textDecoration: 'none',
         marginRight: '2rem',
         marginLeft: '2rem',
         '&:hover': {
-            color: theme.palette.secondary.main,
+            color: theme.palette.primary.light,
         },
     },
 }))
@@ -31,7 +33,7 @@ const NavBar = () => {
     const classes = useStyles()
     return (
         <div>
-            <AppBar color='transparent' position='sticky'>
+            <AppBar className={classes.navbar} position='sticky'>
                 <ToolBar>
                     <Link to='/home'>
                         <img src={ logo } className='navbar-logo' alt='logo'/>

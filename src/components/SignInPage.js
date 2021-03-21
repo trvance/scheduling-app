@@ -23,9 +23,8 @@ const useStyles = makeStyles((theme) => ({
     },
     card: {
         maxWidth: '95vh', 
-        backgroundColor: '#424242', 
-        borderRadius: '20px',
-        boxShadow: '0 3px 3px 0 rgba(30, 30, 30, .7)',
+        borderRadius: '10px',
+        boxShadow: '0px 0px 25px 0px rgba(0, 0, 0, .7)',
         display: 'flex',
         flexDirection: 'column',
         alignItems:'center',
