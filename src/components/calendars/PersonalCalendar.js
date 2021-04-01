@@ -34,9 +34,9 @@ const PersonalCalendar = ({employeeWeekSchedule}) => {
                 />
                 
                 <Appointments />
-                <AppointmentTooltip 
+                {/* <AppointmentTooltip 
                     showCloseButton
-                />
+                /> */}
             </Scheduler>
     )
 }

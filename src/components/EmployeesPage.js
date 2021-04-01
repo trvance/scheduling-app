@@ -4,7 +4,6 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core'
 import NewEmployeeForm from './styledComponents/NewEmployeeForm.js'
-import Employee from './styledComponents/Employee'
 import Divider from '@material-ui/core/Divider'
 import EmployeeCard from './styledComponents/EmployeeCard.js'
 

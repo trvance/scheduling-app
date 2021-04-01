@@ -81,7 +81,7 @@ const Home = () => {
                         <div>
                             <StyledTextField 
                                 variant='filled' 
-                                color='secondary' 
+                                color='primary' 
                                 label='Username' 
                                 required='true'
                             />
@@ -89,7 +89,7 @@ const Home = () => {
                         <div>
                             <StyledTextField 
                                 variant='filled' 
-                                color='secondary' 
+                                color='primary' 
                                 label='Password' 
                                 required='true'
                                 style={{marginBottom: '1rem'}}

@@ -11,56 +11,91 @@ export const testEmployees = [
         ],
         availability: [
             { 
-                title: 'Monday Availability', 
-                startDate: '2021-03-15T07:30',
+                id: 1,
+                startDate: '2021-03-15T09:30',
                 endDate: '2021-03-15T22:30',
                 rRule: 'FREQ=WEEKLY;WKST=SU'
             },
             { 
-                title: 'Tuesday Availability', 
+                id: 2,
                 startDate: '2021-03-16T07:30',
                 endDate: '2021-03-16T22:30',
                 rRule: 'FREQ=WEEKLY;WKST=SU'
             },
             { 
-                title: 'Wednesday Availability', 
+                id: 3,
                 startDate: '2021-03-17T07:30',
                 endDate: '2021-03-17T22:30',
                 rRule: 'FREQ=WEEKLY;WKST=SU'
             },
             { 
-                title: 'Thursday Availability', 
+                id: 4,
                 startDate: '2021-03-18T07:30',
                 endDate: '2021-03-18T22:30',
                 rRule: 'FREQ=WEEKLY;WKST=SU'
             },
             { 
-                title: 'Friday Availability', 
+                id: 5,
                 startDate: '2021-03-19T07:30',
                 endDate: '2021-03-19T22:30',
                 rRule: 'FREQ=WEEKLY;WKST=SU'
             },
             { 
-                title: 'Saturday Availability', 
+                id: 6,
                 startDate: '2021-03-20T07:30',
                 endDate: '2021-03-20T22:30',
                 rRule: 'FREQ=WEEKLY;WKST=SU'
             },
             { 
-                title: 'Sunday Availability', 
+                id: 0,
                 startDate: '2021-03-21T07:30',
                 endDate: '2021-03-21T22:30',
                 rRule: 'FREQ=WEEKLY;WKST=SU'
             },
         ],
         weekSchedule: [
-            { startDate: '2021-03-15T08:30', endDate: '2021-03-15T16:00', title: 'Cold Line' },
-            { startDate: '2021-03-15T16:00', endDate: '2021-03-15T22:30', title: 'Hot Line' },
-            { startDate: '2021-03-16T16:00', endDate: '2021-03-16T22:30', title: 'Cold Line' },
-            { startDate: '2021-03-17T17:00', endDate: '2021-03-17T22:30', title: 'Cashier' },
-            { startDate: '2021-03-19T16:00', endDate: '2021-03-19T22:30', title: 'Cold Line' },
-            { startDate: '2021-03-20T08:30', endDate: '2021-03-20T16:00', title: 'Hot Line' },
-            { startDate: '2021-03-21T16:00', endDate: '2021-03-21T22:30', title: 'Cold Line' },
+            { 
+                startDate: '2021-03-15T08:30', 
+                endDate: '2021-03-15T16:00', 
+                title: 'Cold Line',
+                rRule: 'FREQ=WEEKLY;WKST=SU' 
+            },
+            { 
+                startDate: '2021-03-15T16:00', 
+                endDate: '2021-03-15T22:30', 
+                title: 'Hot Line',
+                rRule: 'FREQ=WEEKLY;WKST=SU' 
+            },
+            { 
+                startDate: '2021-03-16T16:00', 
+                endDate: '2021-03-16T22:30', 
+                title: 'Cold Line',
+                rRule: 'FREQ=WEEKLY;WKST=SU' 
+            },
+            { 
+                startDate: '2021-03-17T17:00', 
+                endDate: '2021-03-17T22:30', 
+                title: 'Cashier',
+                rRule: 'FREQ=WEEKLY;WKST=SU' 
+            },
+            { 
+                startDate: '2021-03-19T16:00', 
+                endDate: '2021-03-19T22:30', 
+                title: 'Cold Line',
+                rRule: 'FREQ=WEEKLY;WKST=SU'
+            },
+            { 
+                startDate: '2021-03-20T08:30', 
+                endDate: '2021-03-20T16:00', 
+                title: 'Hot Line',
+                rRule: 'FREQ=WEEKLY;WKST=SU'
+            },
+            { 
+                startDate: '2021-03-21T16:00', 
+                endDate: '2021-03-21T22:30', 
+                title: 'Cold Line',
+                rRule: 'FREQ=WEEKLY;WKST=SU'
+            },
         ],
     },
     {

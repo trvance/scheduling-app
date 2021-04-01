@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ReactCardFlip from 'react-card-flip'
 import StyledButton from './styledComponents/StyledButton.js'
 import { Box, Card, Container, Grid, makeStyles } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
@@ -23,9 +24,11 @@ const homeStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     calendarCard: {
-        height:'75vh',
+        // height:'75vh',
+        width: '90vw',
+        marginBottom: '2rem',
         borderRadius: '10px',
-        width: '65vw'
+        boxShadow: '0px 0px 25px 0px rgba(0, 0, 0, .7)',
     },
     switchRow: {
         display: 'flex',
@@ -38,37 +41,38 @@ const homeStyles = makeStyles((theme) => ({
 const Home = ({employee}) => {
     const classes = homeStyles()
     const [state, setState] = useState(false)
-    // const [calendarDisplay, setCalendarDisplay] = useState(
-    //     <PersonalCalendar employeeWeekSchedule={employee.weekSchedule}/>
-    // )
+    const [isFlipped, setIsFlipped] = useState(false)
 
-    // const editAvailability = () => {
-    //     setCalendarDisplay(
-    //         <Availability employeeAvailability={employee.availability}/>
-    //     )
-    // }
 
     return (
         <Container className={classes.root} >
-            <Typography variant='h4' className={classes.title}>Home Page</Typography>
-            <Container className={classes.switchRow}>
-                {/* <Typography>My Schedule</Typography> */}
-                <Switch
-                    checked={state}
-                    onChange={ (e)=>setState(e.target.checked) }
-                    name='checked'
-                    inputProps={{ 'aria-label': 'calendar checkbox' }}
-                />
-                <Typography>Change My Availability</Typography>
+                <Typography variant='h4' className={classes.title}>Home Page</Typography>
+                <Container className={classes.switchRow}>
+                    {/* <Typography>My Schedule</Typography> */}
+                    <Switch
+                        checked={state}
+                        onChange={ (e)=>setState(e.target.checked)}
+                        name='checked'
+                        inputProps={{ 'aria-label': 'calendar checkbox' }}
+                        />
+                    <Typography>Change My Availability</Typography>
+                </Container>
+                <Container className={classes.homeDisplay} >
+                        <Card className={classes.calendarCard}>
+                            {state ? 
+                            <Availability employeeAvailability={employee.availability}/> :
+                            <PersonalCalendar employeeWeekSchedule={employee.weekSchedule}/>}
+                        </Card>
+                    {/* <ReactCardFlip isFlipped={state} flipDirection='vertical'>
+                        <Card className={classes.calendarCard}>
+                            <PersonalCalendar employeeWeekSchedule={employee.weekSchedule}/>
+                        </Card>
+                        <Card className={classes.calendarCard}>
+                            <Availability employeeAvailability={employee.availability}/>
+                        </Card>
+                    </ReactCardFlip> */}
+                </Container>
             </Container>
-            <Container className={classes.homeDisplay} >
-                <Card className={classes.calendarCard}>
-                    {state ? 
-                    <Availability employeeAvailability={employee.availability}/> :
-                    <PersonalCalendar employeeWeekSchedule={employee.weekSchedule}/>}
-                </Card>
-            </Container>
-        </Container>
     )
 }
 
