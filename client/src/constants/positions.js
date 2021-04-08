@@ -1,0 +1,7 @@
+export const HOTLINE = 'Hot Line'
+export const COLDLINE = 'Cold Line'
+export const MAINTENANCE = 'Maintenance'
+export const FLOATER = 'Floater'
+export const CASHIER = 'Cashier'
+export const BACKUPCASH = 'Backup Cash'
+export const MEATPREP = 'Meat Prep'
