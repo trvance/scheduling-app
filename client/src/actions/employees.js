@@ -30,3 +30,13 @@ export const deleteEmployee = (id) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const editEmployee = (id, employee) => async (dispatch) => {
+    try {
+        const { data } = await api.editEmployee(id, employee)
+        
+        dispatch({ type: UPDATE, payload: data})
+    } catch (error) {
+        console.log(error)
+    }
+}

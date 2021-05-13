@@ -1,63 +1,47 @@
 import { useState } from 'react'
 import ReactCardFlip from 'react-card-flip'
 import { deleteEmployee } from '../../../actions/employees'
-import Card from '@material-ui/core/Card'
-import Container from '@material-ui/core/Container'
-import Divider from '@material-ui/core/Divider'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
+import { Card, Container, Divider, Button, Typography, IconButton, Slide } from '@material-ui/core'
+import AccountCircleIcon from '@material-ui/icons/AccountCircleOutlined'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import contactButtonImage from '../../../images/more.svg'
 import useStyles from './styles'
-import { useDispatch } from 'react-redux'
 
 const EmployeeCard = ({employee}) => {
     const classes = useStyles()
-    const [isFlipped, setIsFlipped] = useState()
-    const dispatch = useDispatch()
+    const [isFlipped, setIsFlipped] = useState(false)
 
     return (
         <ReactCardFlip isFlipped={isFlipped} flipDirection='vertical'>
-
             <Card className={classes.card}>
                 <Container className={classes.cardFrontTop}>
-                    {employee.firstName} {employee.lastName}
+                    <Typography gutterBottom className={classes.cardTitle} textOverflow="ellipsis">{employee.firstName} {employee.lastName}</Typography>
                     <Divider className={classes.divider}/>
                 </Container>
-                <Container className={classes.cardFrontDetails}>
-                    {employee.positions.map((position)=>
-                        <li>{position}</li>
-                    )}
-                </Container>
-                <Container className={classes.flipButtonFrontArea}>
-                    <Button 
-                        className={classes.flipButton} 
-                        variant='text'
-                        onClick={() => setIsFlipped(!isFlipped)}
-                    >
-                        Flip Card
-                    </Button>
-                    <Button 
-                        className={classes.flipButton} 
-                        variant='text' 
-                        onClick={() => dispatch(deleteEmployee(employee._id))}
-                    >
-                        Delete
-                    </Button>
-                </Container>
+                <Slide direction="down" in >
+                    <Container className={classes.cardFrontDetails}>
+                        <Typography style={{fontSize: 14, color: 'lightgray'}} variant="body2">{employee.positions.join(", ")}</Typography>
+                    </Container>
+                </Slide>
+                <Slide direction="up" in>
+                    <Container className={classes.flipButtonFrontArea}>
+                        <IconButton style={{marginBottom: 30}} onClick={() => setIsFlipped(true)}>
+                            {/* <img style={{width: 30}} src={contactButtonImage} /> */}
+                            <AccountCircleIcon/>
+                        </IconButton>
+                    </Container>
+                </Slide>
             </Card>
-            <Card className={classes.cardBack}>
+            <Card className={classes.cardBack} >
                 <Container className={classes.cardBackContent}>
-                    <div>
-                        {employee.phoneNumber}
-                    </div>
-                    <div>
-                        {employee.email}
-                    </div>
-                    <Button 
-                        className={classes.flipButton} 
-                        onClick={() => setIsFlipped(!isFlipped)}
-                        >
-                            Flip Card
-                    </Button>
+                    
+                        <Typography className={classes.cardBackContent}>{employee.phoneNumber}</Typography>
+                    
+                        <Typography className={classes.cardBackContent}>{employee.email}</Typography>
+                    
+                    <IconButton style={{position: 'absolute', background: 'transparent', bottom:-4}} onClick={ () => setIsFlipped(false) }>
+                        <ArrowBackIcon  />
+                    </IconButton>
                 </Container>
             </Card>
         </ReactCardFlip>

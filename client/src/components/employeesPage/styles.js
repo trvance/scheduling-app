@@ -12,8 +12,27 @@ export default makeStyles((theme) => ({
         color: '#F7F7FF',
     },
     grid: {
-        flexGrow: 1,
+        flexGrow: 5,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 30,
+    },
+    buttonTray: {
+        right: 20,
+        bottom: 20,
+        position: 'fixed',
+        zIndex: 2,
+    },
+    employeeFormContainer: {
+        [theme.breakpoints.down('sm')]: {
+            paddingBottom: 20,
+        },
+        [theme.breakpoints.down('xs')]: {
+            paddingTop: 50,
+            paddingBottom: 20,
+        }
+    },
+    button: {
+        margin:10,
     },
 }))

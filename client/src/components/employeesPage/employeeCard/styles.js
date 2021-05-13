@@ -2,53 +2,62 @@ import { makeStyles } from '@material-ui/core'
 
 export default makeStyles((theme) => ({
     card: {
-        height: '200px',
-        width: '200px',
-        margin: '5px',
-        marginTop: '10px',
-        marginBottom: '10px',
+        height: 200,
+        width: 200,
+        margin: 3,
         borderRadius: '10px',
-        boxShadow: '0 5px 40px -12px rgba(0,0,0,0.8)',
+        //boxShadow: '0 5px 40px -12px rgba(0,0,0,0.8)',
         transition: '0.1s',
         '&:hover' : {
-            boxShadow: '0 10px 70px -12.125px rgba(0,0,0,0.8)',
-            height: '205px',
-            width: '205px',
-            margin: '2px'
+            boxShadow: '0 10px 50px -12.125px rgba(0,0,0,0.8)',
         },
-        '&:hover button' : {
-            opacity: '1',
-        }
+    },
+    editCard: {
+        height: 200,
+        width: 200,
+        borderRadius: '10px',
+        margin:3,
+        //boxShadow: '0 5px 40px -12px rgba(0,0,0,0.8)',
+        background: 'rgba(70, 80, 93, .6)',
+        //opacity: .5,
+        '&:hover' : {
+            boxShadow: '0 10px 50px -12.125px rgba(0,0,0,0.8)',
+        },
     },
     cardFrontTop: {
         height: '50px',
         justifyContent: 'center',
         textAlign: 'center',
-        margin:'auto',
+        margin:0,
         alignContent: 'center',
-        fontSize: '18px',
+    },
+    cardTitle: {
+        fontSize: 19, 
+        fontWeight: 500,
+        marginTop: 5,
+        marginLeft: -5,
+        marginRight: -5,
     },
     cardFrontDetails: {
         height: '120px',
+        width: 200,
         display: 'flex',
-        flexDirection: 'column',
-        justfiyContent: 'space-between',
+        flexDirection: 'reverse-column',
+        justfiyContent: 'center',
         alignItems: 'center',
+        alignContent: 'center',
         textAlign: 'center',
         fontSize: '14px'
     },
     cardBack: {
-        height: '230px',
-        width: '200px',
-        margin: '5px',
-        marginTop:'-25px',
-        marginBottom:'-25px',
+        height: 200,
+        width: 200,
+        margin: 3,
         borderRadius: '10px',
-        boxShadow: '0 10px 70px -12.125px rgba(0,0,0,0.8)',
-        '&:hover button' : {
-            boxShadow: '0 10px 70px -12.125px rgba(0,0,0,0.8)',
-            opacity: 1,
-        }
+        //boxShadow: '0 10px 70px -12.125px rgba(0,0,0,0.8)',
+        '&:hover' :{
+            boxShadow: '0 10px 50px -12.125px rgba(0,0,0,0.8)',
+        },
     },
     cardBackContent: {
         display: 'flex',
@@ -56,14 +65,19 @@ export default makeStyles((theme) => ({
         justfiyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
+        fontSize: 14
     },
     flipButtonFrontArea: {
-        height: '30px',
-        top: '90px',
         justifyContent: 'center',
         alignItems: 'center',
         display: 'flex',
+        height: 40,
     },
+
+    editButtonCard: {
+        borderRadius: 30,
+    },
+
     flipButton: {
         color: theme.palette.secondary.main,
         opacity: 0,
@@ -73,8 +87,13 @@ export default makeStyles((theme) => ({
         height: '25px',
         width: '90px',
         fontSize: '12px',
+        [theme.breakpoints.down('xs')]: {
+            opacity: 1,
+        },
     },
     divider: {
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: theme.palette.primary.main,
+        marginLeft: -5,
+        marginRight: -5,
     }
 }))

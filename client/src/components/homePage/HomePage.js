@@ -1,50 +1,40 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import ReactCardFlip from 'react-card-flip'
-import { Box, Card, Container, Grid, makeStyles, Grow } from '@material-ui/core'
+import { Box, Card, Container, Grid, makeStyles, Grow, Paper, CardMedia, Slide, Button } from '@material-ui/core'
+import Image from 'material-ui-image'
 import Typography from '@material-ui/core/Typography'
-import PersonalCalendar from '../calendars/PersonalCalendar'
-import Availability from '../calendars/Availability'
-import Switch from '@material-ui/core/Switch'
 import useStyles from './styles'
+import vectorAvacado from '../../images/simpleAvocado.png'
+import calendarImage from '../../images/weekly-calendar-page-symbol.png'
+import leafyAvocado from '../../images/avocado-leafy.png'
+import GenerateScheduleButton from './generateScheduleButton/GenerateScheduleButton'
+import shifts from '../../testData/weekShifts'
+import theme from '../../themes/mintTheme'
 
-const Home = ({employee}) => {
+
+const HomePage = ({setPage}) => {
     const classes = useStyles()
-    const [state, setState] = useState(false)
-    const [isFlipped, setIsFlipped] = useState(false)
-
+    const employees = useSelector((state) => state.employees)
+    const dispatch = useDispatch()
+    const date = new Date()
 
     return (
-        <Container className={classes.root} >
-                <Typography variant='h4' className={classes.title}>Home Page</Typography>
-                <Container className={classes.switchRow}>
-                    {/* <Typography>My Schedule</Typography> */}
-                    <Switch
-                        checked={state}
-                        onChange={ (e)=>setState(e.target.checked)}
-                        name='checked'
-                        inputProps={{ 'aria-label': 'calendar checkbox' }}
-                        />
-                    <Typography>Change My Availability</Typography>
-                </Container>
-                <Container className={classes.homeDisplay} >
-                    <Grow in>
-                        <Card className={classes.calendarCard}>
-                            {state ? 
-                            <Availability employeeAvailability={employee.availability}/> :
-                            <PersonalCalendar employeeWeekSchedule={employee.weekSchedule}/>}
-                        </Card>
-                    </Grow>
-                    {/* <ReactCardFlip isFlipped={state} flipDirection='vertical'>
-                        <Card className={classes.calendarCard}>
-                            <PersonalCalendar employeeWeekSchedule={employee.weekSchedule}/>
-                        </Card>
-                        <Card className={classes.calendarCard}>
-                            <Availability employeeAvailability={employee.availability}/>
-                        </Card>
-                    </ReactCardFlip> */}
-                </Container>
-            </Container>
+        //<div className={classes.root}>
+            <Grid className={classes.cardDisplay} container direction='column' justify='center' alignItems='center' spacing={0}>
+                <CardMedia className={classes.titleCard} image={calendarImage}>
+                    <Typography className={classes.title}>Surcheerios</Typography>
+                    <Slide in direction='left' timeout={500}>
+                        <img className={classes.logo} src={leafyAvocado}/>
+                    </Slide>
+                </CardMedia>
+                <GenerateScheduleButton setPage={setPage} />
+                <Button style={{ color:theme.palette.secondary.main, backgroundColor:theme.palette.background.paper, width: 250, height: 50 }} variant='contained'>
+                    Add Employee
+                </Button>
+            </Grid>
+        //</div>
     )
 }
 
-export default Home
+export default HomePage

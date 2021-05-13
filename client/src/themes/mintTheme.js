@@ -20,9 +20,11 @@ const mintTheme = createMuiTheme({
             paper: '#46505D',
         },
         divider: 'rgba(255,255,255,1)',
+        error: {
+            main: '#CA054D'
+        },
     },
     typography: {
-        fontFamily: 'roboto',
         fontSize: 16,
     },
 })
