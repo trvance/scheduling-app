@@ -40,7 +40,7 @@ const EditCard = ({ employee, currentId, setCurrentId, setShowEmployeeForm, setS
                 </Container>
                 <Grid container direction="column" justify="center" alignItems="center" xs={12}>
                     <Slide direction="down" in >
-                        <Card className={classes.editButtonCard}>
+                        <Card style={{borderRadius:'10px'}}>
                             <IconButton style={{backgroundColor:'transparent'}} onClick={ handleEditButton } >
                                 <EditIcon style={{ color:'lightgrey', fontSize:75 }} />
                             </IconButton>

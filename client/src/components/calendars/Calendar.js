@@ -71,7 +71,6 @@ const Calendar = ({employeesSchedules}) => {
             <Appointments appointmentComponent={Appointment} />
             <AppointmentTooltip 
                 showCloseButton
-                showDeleteButton
             />
             <TodayButton />
             <DateNavigator />

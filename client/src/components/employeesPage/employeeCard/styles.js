@@ -53,19 +53,29 @@ export default makeStyles((theme) => ({
         height: 200,
         width: 200,
         margin: 3,
+        display: 'flex',
+        flexDirections: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
         borderRadius: '10px',
-        //boxShadow: '0 10px 70px -12.125px rgba(0,0,0,0.8)',
         '&:hover' :{
             boxShadow: '0 10px 50px -12.125px rgba(0,0,0,0.8)',
         },
     },
     cardBackContent: {
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
         display: 'flex',
         flexDirection: 'column',
         justfiyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
-        fontSize: 14
+        fontSize: 14,
+    },
+    cardBackInfo: {
+        fontSize: 13,
+        color: 'lightGray',
+        marginBottom: 4,
     },
     flipButtonFrontArea: {
         justifyContent: 'center',
@@ -74,23 +84,11 @@ export default makeStyles((theme) => ({
         height: 40,
     },
 
-    editButtonCard: {
-        borderRadius: 30,
+    backInfoTitle:{
+        color: theme.palette.primary.light,
     },
 
-    flipButton: {
-        color: theme.palette.secondary.main,
-        opacity: 0,
-        margin:0,
-        padding:0,
-        transition: '0.1s',
-        height: '25px',
-        width: '90px',
-        fontSize: '12px',
-        [theme.breakpoints.down('xs')]: {
-            opacity: 1,
-        },
-    },
+
     divider: {
         backgroundColor: theme.palette.primary.main,
         marginLeft: -5,

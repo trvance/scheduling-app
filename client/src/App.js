@@ -22,14 +22,15 @@ const App = () => {
   }, [currentId, dispatch])
   
   const [page, setPage] = useState(0)
-  const pages = [<HomePage setPage={setPage}/>, <SchedulePage/>, <EmployeesPage/>]
+  const [addEmployee, setAddEmployee] = useState(false)
+  const pages = [<HomePage setPage={setPage} setAddEmployee={setAddEmployee} />, <SchedulePage/>, <EmployeesPage addEmployee={addEmployee} setAddEmployee={setAddEmployee}/>]
 
   return (
     <Router>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
       <ThemeProvider theme={ mintTheme }>
         <CssBaseline />
-          <Navigation pages={pages} page={page} setPage={setPage}/>
+          <Navigation pages={pages} page={page} setPage={setPage} />
       </ThemeProvider>
     </Router>
   );

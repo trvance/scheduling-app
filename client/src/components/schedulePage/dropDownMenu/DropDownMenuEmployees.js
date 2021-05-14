@@ -10,6 +10,7 @@ const DropDownMenuEmployees = ({selectedEmployee, setSelectedEmployee}) => {
     const ITEM_HEIGHT = 50
     const [anchorEl, setAnchorEl] = useState(null)
     const open = Boolean(anchorEl)
+    let fullName = selectedEmployee ? selectedEmployee.firstName + " " + selectedEmployee.lastName : ""
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget)
@@ -47,7 +48,7 @@ const DropDownMenuEmployees = ({selectedEmployee, setSelectedEmployee}) => {
                 onClick={handleClick}
                 startIcon={<PersonOutlineIcon color='secondary' style={{fontSize:25}}/>}
             >
-                {selectedEmployee.firstName} {selectedEmployee.lastName}
+                {fullName}
             </Button>
             <Menu
                 id="long-menu"

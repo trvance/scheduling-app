@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import ReactCardFlip from 'react-card-flip'
 import { deleteEmployee } from '../../../actions/employees'
-import { Card, Container, Divider, Button, Typography, IconButton, Slide } from '@material-ui/core'
+import { Card, Container, Grid, Divider, Button, Typography, IconButton, Slide } from '@material-ui/core'
 import AccountCircleIcon from '@material-ui/icons/AccountCircleOutlined'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import contactButtonImage from '../../../images/more.svg'
@@ -13,7 +13,9 @@ const EmployeeCard = ({employee}) => {
 
     return (
         <ReactCardFlip isFlipped={isFlipped} flipDirection='vertical'>
-            <Card className={classes.card}>
+            
+            <Card className={classes.card} >
+                <Button style={{position: 'absolute', opacity: 0, height: 200, width: 200}} onClick={() => setIsFlipped(true)} />
                 <Container className={classes.cardFrontTop}>
                     <Typography gutterBottom className={classes.cardTitle} textOverflow="ellipsis">{employee.firstName} {employee.lastName}</Typography>
                     <Divider className={classes.divider}/>
@@ -23,27 +25,30 @@ const EmployeeCard = ({employee}) => {
                         <Typography style={{fontSize: 14, color: 'lightgray'}} variant="body2">{employee.positions.join(", ")}</Typography>
                     </Container>
                 </Slide>
-                <Slide direction="up" in>
-                    <Container className={classes.flipButtonFrontArea}>
-                        <IconButton style={{marginBottom: 30}} onClick={() => setIsFlipped(true)}>
-                            {/* <img style={{width: 30}} src={contactButtonImage} /> */}
-                            <AccountCircleIcon/>
-                        </IconButton>
-                    </Container>
-                </Slide>
             </Card>
+
             <Card className={classes.cardBack} >
-                <Container className={classes.cardBackContent}>
-                    
-                        <Typography className={classes.cardBackContent}>{employee.phoneNumber}</Typography>
-                    
-                        <Typography className={classes.cardBackContent}>{employee.email}</Typography>
-                    
-                    <IconButton style={{position: 'absolute', background: 'transparent', bottom:-4}} onClick={ () => setIsFlipped(false) }>
-                        <ArrowBackIcon  />
-                    </IconButton>
-                </Container>
+                <Grid container className={classes.cardBackContent} >
+                    <Button style={{position: 'absolute', opacity: 0, height: 200, width: 200}} onClick={() => setIsFlipped(false)} />
+                        <Grid container item direction='column' justify='center'>
+                            <Typography className={classes.backInfoTitle} variant='body2'>Phone Number</Typography>
+                            <Typography className={classes.cardBackInfo}>{employee.phoneNumber}</Typography>
+                        </Grid>
+                        <Grid container item direction='column' justify='center'>
+                            <Typography className={classes.backInfoTitle} variant='body2'>Email</Typography>
+                            <Typography className={classes.cardBackInfo}>{employee.email}</Typography>
+                        </Grid>
+                        <Grid container item direction='column' justify='center'>
+                            <Typography className={classes.backInfoTitle} variant='body2'>Desired Hours</Typography>
+                            <Typography className={classes.cardBackInfo}>{employee.desiredHours}</Typography>
+                        </Grid>
+                        <Grid container item direction='column' justify='center'>
+                            <Typography className={classes.backInfoTitle} variant='body2'>Scheduled Hours</Typography>
+                            <Typography className={classes.cardBackInfo}>{employee.numHours}</Typography>
+                        </Grid>
+                </Grid>
             </Card>
+            
         </ReactCardFlip>
     )
 }

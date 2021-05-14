@@ -16,7 +16,7 @@ import {
     DateNavigator,
 } from '@devexpress/dx-react-scheduler-material-ui'
 import Card from '@material-ui/core/Card'
-import theme from '../../themes/mintTheme';
+import theme from '../../themes/mintTheme'
 import { testEmployees } from '../../testData/testEmployees'
 
 const Appointment = ({

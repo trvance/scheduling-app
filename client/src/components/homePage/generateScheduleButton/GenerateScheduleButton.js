@@ -50,19 +50,26 @@ const GenerateScheduleButton = ({setPage}) => {
 
     const createSchedule = (shifts) => {
         let i = 0
+        let dayOff = []
         scheduledEmployees = []
         excessShifts = []
         let blankEmployees = eraseSchedules(employees)
         randomizeEmployees(blankEmployees)
+
+        blankEmployees.forEach((employee) => {
+            let randomDay = Math.floor(Math.random() * 7)
+            dayOff.push(randomDay)
+        })
         
         while(shifts.length > 0) {
-            let randomShift = Math.floor(Math.random()*shifts.length)
+            let randomShift = Math.floor(Math.random() * shifts.length)
             let shift = shifts[randomShift]
 
             let currentEmployee = blankEmployees[i]
+            let currentDayOff = dayOff[i]
             let currentEmployeeId = currentEmployee._id
             
-            const isEmployeeAvailable = canEmployeeTakeShift(currentEmployee, shift)
+            const isEmployeeAvailable = canEmployeeTakeShift(currentEmployee, shift, currentDayOff)
 
             if(isEmployeeAvailable && 
                 (currentEmployee.numHours <= currentEmployee.desiredHours.replace(/\D/g, "").slice(-2) ||
@@ -92,7 +99,7 @@ const GenerateScheduleButton = ({setPage}) => {
     }
 
 
-    const canEmployeeTakeShift = (employee, shift) => {
+    const canEmployeeTakeShift = (employee, shift, currentDayOff) => {
         const date = new Date(shift.startDate)
         const dayOfWeek = date.getDay()
         const shiftStartTime = convertTimeToNumber(shift.startDate.split(' ').[4])
@@ -106,6 +113,7 @@ const GenerateScheduleButton = ({setPage}) => {
 
         return isAlreadyWorking ? false
                 : !isTrained ? false
+                : dayOfWeek == currentDayOff ? false
                 : isMorningShift && isAvailableMorning ? true
                 : !isMorningShift && isAvailableEvening ? true
                 : false
@@ -185,13 +193,17 @@ const GenerateScheduleButton = ({setPage}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        let randomShiftsArray = randomizeShifts(shifts)
-        createSchedule(randomShiftsArray)
-        console.log(scheduledEmployees)
-        console.log(excessShifts)
-        // setScheduleStack([...scheduleStack, scheduledEmployees] )
-        saveEmployees( scheduledEmployees )
-        setPage(1) 
+        try {
+            let randomShiftsArray = randomizeShifts(shifts)
+            createSchedule(randomShiftsArray)
+            console.log(scheduledEmployees)
+            console.log(excessShifts)
+            // setScheduleStack([...scheduleStack, scheduledEmployees] )
+            saveEmployees( scheduledEmployees )
+            setPage(1) 
+        } catch (error) {
+            console.log("No employees to generate schedule with")
+        }
     }
 
     

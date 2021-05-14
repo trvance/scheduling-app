@@ -10,12 +10,12 @@ import EditCard from './employeeCard/EditCard'
 import EmployeeForm from './employeeForm/EmployeeForm'
 import useStyles from './styles'
 
-const EmployeesPage = () => {
+const EmployeesPage = ({ addEmployee, setAddEmployee }) => {
     const classes = useStyles()
     const dispatch = useDispatch()
     const employees = useSelector((state) => state.employees)
-    const [showEmployeeForm, setShowEmployeeForm] = useState(false)
-    const [showEmployeeGrid, setShowEmployeeGrid] = useState(true)
+    const [showEmployeeForm, setShowEmployeeForm] = useState(addEmployee)
+    const [showEmployeeGrid, setShowEmployeeGrid] = useState(!addEmployee)
     const [editMode, setEditMode] = useState(false)
     const [currentId, setCurrentId] = useState(null)
 
@@ -33,8 +33,7 @@ const EmployeesPage = () => {
     //             dispatch(deleteEmployee(employee._id))
     //         }
     //     })
-    //     console.log(names)
-    //     console.log(newEmployees)
+    //
     // }
 
     useEffect(() => {
@@ -54,6 +53,7 @@ const EmployeesPage = () => {
 
     const unmountEmployeeForm = () => {
         setShowEmployeeForm(!showEmployeeForm)
+        setAddEmployee(false)
         setTimeout(function(){setShowEmployeeGrid(!showEmployeeGrid)},250)
         setEditMode(false)
     }
@@ -101,9 +101,10 @@ const EmployeesPage = () => {
                     <EditIcon />
                 </Fab>
             </Grid>
-
+            
             <Slide direction="up" in={showEmployeeForm} mountOnEnter unmountOnExit>
                 <Grid item sm={12} className={classes.employeeFormContainer} >
+                    {setAddEmployee(false)}
                     <EmployeeForm currentId={currentId} setCurrentId={setCurrentId} unmountEmployeeForm={unmountEmployeeForm}/>
                 </Grid>
             </Slide>

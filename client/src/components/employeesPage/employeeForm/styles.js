@@ -38,15 +38,27 @@ export default makeStyles((theme) => ({
   },
 
   submitButton: {
+    color:theme.palette.primary.main, 
+    backgroundColor:theme.palette.background.paper,
+    width: 250, 
+    height: 50, 
     margin: 5,
     marginBottom: 10,
-    width: '90%',
+    width: '60%',
+    [theme.breakpoints.down('sm')]: {
+      width: '90%'
+    }
   },
 
   clearButton: {
+    color: theme.palette.secondary.main, 
+    backgroundColor: theme.palette.background.paper,
     margin: 5,
     marginBottom: 15,
-    width: '90%',
+    width: '60%',
+    [theme.breakpoints.down('sm')]: {
+      width: '90%'
+    }
   },
 
 }));
